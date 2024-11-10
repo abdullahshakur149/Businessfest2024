@@ -3,8 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import DashboardLayout from '@/components/Dashlayout';
 import axios from 'axios';
-import Toastify from 'toastify-js';
-import "toastify-js/src/toastify.css";
+import { useState } from 'react';
 
 // Validation Schema
 const IdeaEvaluatorSchema = Yup.object().shape({
@@ -15,44 +14,32 @@ const IdeaEvaluatorSchema = Yup.object().shape({
 });
 
 const IdeaEvaluator = () => {
+  const [responseMessage, setResponseMessage] = useState(''); // State to store response message
+
   return (
     <DashboardLayout>
       <div className="data p-10">
         <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '4rem', marginLeft: '5rem', color: '#333' }}>
           Idea Evaluator
         </h1>
+        
         <Formik
           initialValues={{ teamname: '', program: '', semester: '', description: '' }}
           validationSchema={IdeaEvaluatorSchema}
-          onSubmit= { async(values, { resetForm }) => {
-            console.log(values); 
-
-
+          onSubmit={async (values, { resetForm }) => {
+            console.log(values);
+            
             try {
-              const response = await axios.post("/api/cohere/",values);
-              if(response.data.success){
-                Toastify({
-                  text: "Idea Approved!",
-                  duration: 3000,
-                  close: true,
-                  gravity: "top",
-                  position: "right",
-                  backgroundColor: "#4CAF50",
-              }).showToast();
-              }
-              else{
-                Toastify({
-                  text: "Rejected",
-                  duration: 3000,
-                  close: true,
-                  gravity: "top",
-                  position: "right",
-                  backgroundColor: "#FF6347",
-              }).showToast();
+              const response = await axios.post("/api/cohere/", values);
+              if (response.data.success) {
+                setResponseMessage(response.data.response); // Display full response if approved
+              } else {
+                setResponseMessage("Rejected"); // Display rejection message if not approved
               }
             } catch (error) {
-              
+              console.error('Error occurred:', error);
             }
+
             resetForm();
           }}
         >
@@ -68,6 +55,7 @@ const IdeaEvaluator = () => {
               borderRadius: '8px',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
             }}>
+              {/* Form fields */}
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <label htmlFor="teamname" style={{ marginBottom: '0.5rem', color: '#555' }}>Team Name</label>
                 <Field
@@ -127,8 +115,8 @@ const IdeaEvaluator = () => {
                 )}
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 style={{
                   padding: '0.75rem',
                   backgroundColor: '#4CAF50',
@@ -146,6 +134,13 @@ const IdeaEvaluator = () => {
             </Form>
           )}
         </Formik>
+
+        {/* Conditionally render the response message */}
+        {responseMessage && (
+          <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#e0f7fa', borderRadius: '8px', color: '#00796b' }}>
+            <p>{responseMessage}</p>
+          </div>
+        )}
       </div>
     </DashboardLayout>
   );

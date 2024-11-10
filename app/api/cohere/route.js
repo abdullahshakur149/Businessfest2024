@@ -35,10 +35,11 @@ export async function POST(request) {
     if (data && data.message && Array.isArray(data.message.content)) {
       // Extract the content from the array
       const responseContent = data.message.content[0].text.trim();
+      
 
       // Return the response content directly
       return NextResponse.json({
-        response: responseContent || 'No clear decision from the model.',
+        response: responseContent,  success: true || 'No clear decision from the model.',
       });
     } else {
       // If no content or empty array, return a fallback message

@@ -14,7 +14,13 @@ const SignUp = () => {
     const validationSchema = Yup.object({
         username: Yup.string().required('Username is required'),
         email: Yup.string().email('Invalid email format').required('Email is required'),
-        password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+        password: Yup.string()
+            .min(8, 'Password must be at least 8 characters')
+            .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+            .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+            .matches(/\d/, 'Password must contain at least one number')
+            .matches(/[\W_]/, 'Password must contain at least one special character')
+            .required('Password is required'),
     });
 
     const formik = useFormik({
@@ -54,7 +60,7 @@ const SignUp = () => {
     });
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-300 to-blue-300">
+        <div className="flex justify-center items-center min-h-screen  ">
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
                 {/* Logo at the top */}
                 <div className="flex justify-center mb-6">
@@ -74,7 +80,7 @@ const SignUp = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.username}
-                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                            className={`peer w-full px-4 py-4 border  rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                 formik.errors.username && formik.touched.username
                                     ? 'border-red-500'
                                     : 'border-gray-300 focus:border-purple-500'
@@ -101,7 +107,7 @@ const SignUp = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.email}
-                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                            className={`peer w-full px-4 py-4 border rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                 formik.errors.email && formik.touched.email
                                     ? 'border-red-500'
                                     : 'border-gray-300 focus:border-purple-500'
@@ -128,7 +134,7 @@ const SignUp = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.password}
-                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                            className={`peer w-full px-4 py-4 border rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                 formik.errors.password && formik.touched.password
                                     ? 'border-red-500'
                                     : 'border-gray-300 focus:border-purple-500'

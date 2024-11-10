@@ -68,7 +68,7 @@ const Login = () => {
     });
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-200 to-blue-300">
+        <div className="flex justify-center items-center min-h-screen">
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
                 {/* Logo */}
                 <div className="flex justify-center mb-4">
@@ -91,7 +91,7 @@ const Login = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.email}
-                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                            className={`peer w-full px-4 py-4 border r  rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                 formik.errors.email && formik.touched.email
                                     ? 'border-red-500'
                                     : 'border-gray-300 focus:border-purple-500'
@@ -118,7 +118,7 @@ const Login = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.password}
-                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                            className={`peer w-full px-4 py-4 border  rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                 formik.errors.password && formik.touched.password
                                     ? 'border-red-500'
                                     : 'border-gray-300 focus:border-purple-500'

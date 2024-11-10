@@ -4,28 +4,62 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
 import bflogo from "@/public/bflogo.png";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
     // Validation schema using Yup
     const validationSchema = Yup.object({
-        username: Yup.string().required('Username is required'),
+        email: Yup.string().required('email is required'),
         password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     });
 
     const formik = useFormik({
         initialValues: {
-            username: "",
+            email: "",
             password: "",
         },
         validationSchema,
-        onSubmit: (values, { setSubmitting,resetForm }) => {
+        onSubmit: async (values, { setSubmitting,resetForm }) => {
             console.log(values);
+
+            try {
+          
+                const { email, password } = values;
+          
+                const res = await signIn("credentials", {
+                  email,
+                  password,
+                  redirect: false,
+                });
+          
+                if (res.ok) {
+                    setSubmitting(true)
+                  toast({
+                    variant: "default",
+                    title: "Success",
+                    description: "Login successful!",
+                  });
+          
+                } else {
+                    setSubmitting(false)
+                  toast({
+                    variant: "default",
+                    title: "Failed",
+                    description: res.error || "Login failed",
+                  });
+                }
+              } catch (error) {
+                toast({
+                  variant: "default",
+                  title: "Error",
+                  description: "An unexpected error occurred.",
+                });
+              } finally {
+                setSubmitting(false)
+              }
             resetForm();
             // Simulate an API request
-            setTimeout(() => {
-                alert("Logged in successfully!");
-                setSubmitting(false);  // Reset the submitting state
-            }, 2000);  // Simulate a 2-second API request
+              // Simulate a 2-second API request
         },
     });
 
@@ -42,30 +76,30 @@ const Login = () => {
 
                     <div className="form w-full">
                         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-                            {/* Username */}
+                            {/* email */}
                             <div className="relative mt-6">
                                 <input
-                                    id="username"
-                                    name="username"
-                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    type="email"
                                     placeholder=" "
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
-                                    value={formik.values.username}
+                                    value={formik.values.email}
                                     className={`peer w-full px-4 py-3 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
-                                        formik.errors.username && formik.touched.username
+                                        formik.errors.email && formik.touched.email
                                             ? 'border-red-500'
                                             : 'border-gray-300 focus:border-purple-500'
                                     }`}
                                 />
                                 <label
-                                    htmlFor="username"
+                                    htmlFor="email"
                                     className="absolute left-4 -top-2.5 px-1 peer-focus:bg-white rounded-3xl text-black text-base transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
                                 >
-                                    Username
+                                    email
                                 </label>
-                                {formik.errors.username && formik.touched.username && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.username}</div>
+                                {formik.errors.email && formik.touched.email && (
+                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.email}</div>
                                 )}
                             </div>
 

@@ -1,11 +1,12 @@
 import React from 'react'
+import "@/app/globals.css";
 
-const layout = ({children}) => {
+const layout = ({ children }) => {
   return (
     <html lang='en'>
-        <body>
-    <main>{children}</main>
-        </body>
+      <body className='bg-gradient-to-r  from-black/50 via-purple-700 to-cyan-400'>
+        <main >{children}</main>
+      </body>
     </html>
   )
 }

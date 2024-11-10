@@ -8,9 +8,10 @@ const IdeaEvaluator = () => {
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>Idea Evaluator</h1>
       <Formik
         initialValues={{ teamname: '', semester: '', description: '' }}
-        onSubmit={(values) => {
+        onSubmit={(values,{resetForm}) => {
           console.log(values);  // Replace with desired submission logic
           alert("Form submitted!");
+          resetForm();
         }}
       >
         {() => (

@@ -1,6 +1,14 @@
 "use client";
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import DashboardLayout from '@/components/Dashlayout';
+
+// Validation Schema
+const IdeaEvaluatorSchema = Yup.object().shape({
+  teamname: Yup.string().required('Team Name is required'),
+  semester: Yup.number().oneOf([1, 2, 3, 4, 5, 6, 7, 8], 'Please select a valid semester').nullable(),
+  description: Yup.string().required('Description is required')
+});
 
 const IdeaEvaluator = () => {
   return (
@@ -8,13 +16,14 @@ const IdeaEvaluator = () => {
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>Idea Evaluator</h1>
       <Formik
         initialValues={{ teamname: '', semester: '', description: '' }}
-        onSubmit={(values,{resetForm}) => {
+        validationSchema={IdeaEvaluatorSchema}
+        onSubmit={(values, { resetForm }) => {
           console.log(values);  // Replace with desired submission logic
           alert("Form submitted!");
           resetForm();
         }}
       >
-        {() => (
+        {({ errors, touched }) => (
           <Form style={{ 
             display: 'flex', 
             flexDirection: 'column', 
@@ -34,16 +43,27 @@ const IdeaEvaluator = () => {
                 placeholder="Enter team name"
                 style={{ padding: '0.75rem', border: '1px solid #ddd', borderRadius: '4px' }}
               />
+              {errors.teamname && touched.teamname ? (
+                <div style={{ color: 'red', fontSize: '0.875rem' }}>{errors.teamname}</div>
+              ) : null}
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <label htmlFor="semester" style={{ marginBottom: '0.5rem', color: '#555' }}>Semester</label>
               <Field
+                as="select"
                 id="semester"
                 name="semester"
-                placeholder="Enter semester"
                 style={{ padding: '0.75rem', border: '1px solid #ddd', borderRadius: '4px' }}
-              />
+              >
+                <option value="" label="Select semester" />
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                  <option key={sem} value={sem} label={`Semester ${sem}`} />
+                ))}
+              </Field>
+              {errors.semester && touched.semester ? (
+                <div style={{ color: 'red', fontSize: '0.875rem' }}>{errors.semester}</div>
+              ) : null}
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -56,6 +76,9 @@ const IdeaEvaluator = () => {
                 rows="4"
                 style={{ padding: '0.75rem', border: '1px solid #ddd', borderRadius: '4px', resize: 'none' }}
               />
+              {errors.description && touched.description ? (
+                <div style={{ color: 'red', fontSize: '0.875rem' }}>{errors.description}</div>
+              ) : null}
             </div>
 
             <button 

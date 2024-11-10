@@ -86,7 +86,7 @@ const Login = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.email}
-                                    className={`peer w-full px-4 py-3 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                         formik.errors.email && formik.touched.email
                                             ? 'border-red-500'
                                             : 'border-gray-300 focus:border-purple-500'
@@ -113,7 +113,7 @@ const Login = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.password}
-                                    className={`peer w-full px-4 py-3 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                         formik.errors.password && formik.touched.password
                                             ? 'border-red-500'
                                             : 'border-gray-300 focus:border-purple-500'

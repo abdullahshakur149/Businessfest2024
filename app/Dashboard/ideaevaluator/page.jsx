@@ -23,7 +23,6 @@ const IdeaEvaluator = () => {
           validationSchema={IdeaEvaluatorSchema}
           onSubmit={(values, { resetForm }) => {
             console.log(values); // Replace with desired submission logic
-            alert("Form submitted!");
             resetForm();
           }}
         >

@@ -40,6 +40,10 @@ const Login = () => {
                         position: "center",
                         backgroundColor: "#4caf50",
                     }).showToast();
+
+                    setTimeout(() => {
+                        window.location.href = "/Dashboard"; // Replace with your target route
+                    }, 5000);
                 } else {
                     setSubmitting(false);
                     Toastify({

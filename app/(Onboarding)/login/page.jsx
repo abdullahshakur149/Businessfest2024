@@ -70,10 +70,10 @@ const Login = () => {
     });
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-700 to-blue-300">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-200 to-blue-300">
             <div className="flex items-center justify-center w-full max-w-6xl p-8 rounded-lg">
                 <div className="w-full lg:w-6/12">
-                    <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-white via-purple-500 to-cyan-200 bg-clip-text text-transparent">
+                    <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-white/20 via-purple-300 to-cyan-200 bg-clip-text text-transparent">
                         Login
                     </h1>
                     <div className="form w-full">
@@ -87,7 +87,7 @@ const Login = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.email}
-                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-purple-400 via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                         formik.errors.email && formik.touched.email
                                             ? 'border-red-500'
                                             : 'border-gray-300 focus:border-purple-500'
@@ -100,7 +100,7 @@ const Login = () => {
                                     Email
                                 </label>
                                 {formik.errors.email && formik.touched.email && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.email}</div>
+                                    <div className="text-black text-sm mt-1">{formik.errors.email}</div>
                                 )}
                             </div>
                             <div className="relative mt-6">
@@ -112,7 +112,7 @@ const Login = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     value={formik.values.password}
-                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-purple-400 via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
                                         formik.errors.password && formik.touched.password
                                             ? 'border-red-500'
                                             : 'border-gray-300 focus:border-purple-500'
@@ -125,7 +125,7 @@ const Login = () => {
                                     Password
                                 </label>
                                 {formik.errors.password && formik.touched.password && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.password}</div>
+                                    <div className="text-black text-sm mt-1">{formik.errors.password}</div>
                                 )}
                             </div>
                             <button
@@ -135,7 +135,7 @@ const Login = () => {
                             >
                                 {formik.isSubmitting ? "Logging in..." : "Log In"}
                             </button>
-                            <div className="sign-up text-white mt-5 ">
+                            <div className="sign-up text-black mt-5 ">
                                 Dont have an account <Link className='underline' href="/signup" >Sign up</Link>
                             </div>
                         </form>

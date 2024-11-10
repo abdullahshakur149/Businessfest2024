@@ -60,7 +60,7 @@ const SignUp = () => {
     });
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-700 to-blue-300">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-300 to-blue-300">
             {/* Centered Container */}
             <div className="flex items-center justify-center w-full max-w-6xl p-8 rounded-lg">
                 {/* Left side: Sign-Up Form */}
@@ -94,7 +94,7 @@ const SignUp = () => {
                                     Username
                                 </label>
                                 {formik.errors.username && formik.touched.username && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.username}</div>
+                                    <div className="text-black text-sm mt-1">{formik.errors.username}</div>
                                 )}
                             </div>
 
@@ -121,7 +121,7 @@ const SignUp = () => {
                                     Email
                                 </label>
                                 {formik.errors.email && formik.touched.email && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.email}</div>
+                                    <div className="text-black text-sm mt-1">{formik.errors.email}</div>
                                 )}
                             </div>
 
@@ -148,7 +148,7 @@ const SignUp = () => {
                                     Password
                                 </label>
                                 {formik.errors.password && formik.touched.password && (
-                                    <div className="text-orange-100 text-sm mt-1">{formik.errors.password}</div>
+                                    <div className="text-black text-sm mt-1">{formik.errors.password}</div>
                                 )}
                             </div>
 

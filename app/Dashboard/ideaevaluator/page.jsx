@@ -13,7 +13,8 @@ const IdeaEvaluatorSchema = Yup.object().shape({
 const IdeaEvaluator = () => {
   return (
     <DashboardLayout>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>Idea Evaluator</h1>
+      <div className="data p-10">
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '4rem',marginLeft:"5rem", color: '#333' }}>Idea Evaluator</h1>
       <Formik
         initialValues={{ teamname: '', semester: '', description: '' }}
         validationSchema={IdeaEvaluatorSchema}
@@ -100,6 +101,8 @@ const IdeaEvaluator = () => {
           </Form>
         )}
       </Formik>
+      </div>
+      
     </DashboardLayout>
   );
 };

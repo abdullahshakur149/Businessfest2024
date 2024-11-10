@@ -67,7 +67,7 @@ const SignUp = () => {
                     <Image src={bflogo} alt="BF Logo" width={100} height={50} />
                 </div>
 
-                <h2 className="text-center text-3xl font-semibold text-gray-800 mb-6">Sign Up</h2>
+                <h2 className="text-center text-3xl font-semibold text-gray-800 mb-6">Welcome to Business Fest</h2>
 
                 <form className="space-y-4" onSubmit={formik.handleSubmit}>
                     {/* Username */}

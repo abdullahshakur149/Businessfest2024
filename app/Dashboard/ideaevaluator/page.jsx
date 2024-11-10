@@ -3,6 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import DashboardLayout from '@/components/Dashlayout';
 import axios from 'axios';
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css";
 
 // Validation Schema
 const IdeaEvaluatorSchema = Yup.object().shape({

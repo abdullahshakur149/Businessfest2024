@@ -2,6 +2,7 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
+import DashboardNavbar from './DashboardNavbar';
 
 const DashboardLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,6 +12,11 @@ const DashboardLayout = ({ children }) => {
   };
 
   return (
+    <div>
+      <div style={{marginBottom:"5rem"}} className="navbar">
+      {/* <DashboardNavbar/> */}
+
+      </div>
     <div style={{ display: 'flex', minHeight: '100vh', flexDirection: 'row' }}>
       {/* Toggle Button for Small Screens */}
       <button
@@ -110,6 +116,7 @@ const DashboardLayout = ({ children }) => {
           }
         }
       `}</style>
+    </div>
     </div>
   );
 };

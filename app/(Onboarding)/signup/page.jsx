@@ -7,6 +7,7 @@ import bflogo from "@/public/bflogo.png";
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 import axios from 'axios';
+import Link from 'next/link';
 const SignUp = () => {
     // Validation schema using Yup
     const validationSchema = Yup.object({

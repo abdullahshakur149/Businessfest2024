@@ -7,6 +7,7 @@ import bflogo from "@/public/bflogo.png";
 import { signIn } from "next-auth/react";
 import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
+import Link from 'next/link';
 
 const Login = () => {
     const validationSchema = Yup.object({
@@ -134,6 +135,9 @@ const Login = () => {
                             >
                                 {formik.isSubmitting ? "Logging in..." : "Log In"}
                             </button>
+                            <div className="sign-up text-white mt-5 ">
+                                Dont have an account <Link className='underline' href="/signup" >Sign up</Link>
+                            </div>
                         </form>
                     </div>
                 </div>

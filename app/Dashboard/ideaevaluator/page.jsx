@@ -2,6 +2,7 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import DashboardLayout from '@/components/Dashlayout';
+import axios from 'axios';
 
 // Validation Schema
 const IdeaEvaluatorSchema = Yup.object().shape({
@@ -21,8 +22,35 @@ const IdeaEvaluator = () => {
         <Formik
           initialValues={{ teamname: '', program: '', semester: '', description: '' }}
           validationSchema={IdeaEvaluatorSchema}
-          onSubmit={(values, { resetForm }) => {
-            console.log(values); // Replace with desired submission logic
+          onSubmit= { async(values, { resetForm }) => {
+            console.log(values); 
+
+
+            try {
+              const response = await axios.post("/api/cohere/",values);
+              if(response.data.success){
+                Toastify({
+                  text: "Idea Approved!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top",
+                  position: "right",
+                  backgroundColor: "#4CAF50",
+              }).showToast();
+              }
+              else{
+                Toastify({
+                  text: "Rejected",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top",
+                  position: "right",
+                  backgroundColor: "#FF6347",
+              }).showToast();
+              }
+            } catch (error) {
+              
+            }
             resetForm();
           }}
         >

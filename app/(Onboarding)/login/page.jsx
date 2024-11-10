@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -22,8 +22,6 @@ const Login = () => {
         },
         validationSchema,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
-            console.log(values);
-
             try {
                 const { email, password } = values;
                 const res = await signIn("credentials", {
@@ -71,81 +69,86 @@ const Login = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-200 to-blue-300">
-            <div className="flex items-center justify-center w-full max-w-6xl p-8 rounded-lg">
-                <div className="w-full lg:w-6/12">
-                    <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-white/20 via-purple-300 to-cyan-200 bg-clip-text text-transparent">
-                        Login
-                    </h1>
-                    <div className="form w-full">
-                        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-                            <div className="relative mt-6">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    placeholder=" "
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.email}
-                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-purple-400 via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
-                                        formik.errors.email && formik.touched.email
-                                            ? 'border-red-500'
-                                            : 'border-gray-300 focus:border-purple-500'
-                                    }`}
-                                />
-                                <label
-                                    htmlFor="email"
-                                    className="absolute left-4 -top-2.5 px-1 peer-focus:bg-white rounded-3xl text-black text-base transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                                >
-                                    Email
-                                </label>
-                                {formik.errors.email && formik.touched.email && (
-                                    <div className="text-black text-sm mt-1">{formik.errors.email}</div>
-                                )}
-                            </div>
-                            <div className="relative mt-6">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    placeholder=" "
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    value={formik.values.password}
-                                    className={`peer w-full px-4 py-4 border bg-gradient-to-r from-purple-400 via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
-                                        formik.errors.password && formik.touched.password
-                                            ? 'border-red-500'
-                                            : 'border-gray-300 focus:border-purple-500'
-                                    }`}
-                                />
-                                <label
-                                    htmlFor="password"
-                                    className="absolute left-4 -top-2.5 px-1 peer-focus:bg-white rounded-3xl text-black text-base transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                                >
-                                    Password
-                                </label>
-                                {formik.errors.password && formik.touched.password && (
-                                    <div className="text-black text-sm mt-1">{formik.errors.password}</div>
-                                )}
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full py-3 mt-6 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-                                disabled={formik.isSubmitting}
-                            >
-                                {formik.isSubmitting ? "Logging in..." : "Log In"}
-                            </button>
-                            <div className="sign-up text-black mt-5 ">
-                                Dont have an account <Link className='underline' href="/signup" >Sign up</Link>
-                            </div>
-                        </form>
-                    </div>
+            <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+                {/* Logo */}
+                <div className="flex justify-center mb-4">
+                    <Image src={bflogo} alt="BF Logo" width={100} height={100} />
                 </div>
-                <div className="hidden lg:block lg:w-6/12 p-8">
-                    <div className="flex justify-center items-center">
-                        <Image src={bflogo} alt="BF Logo" width={800} height={200} />
+
+                {/* Title */}
+                <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Login</h1>
+
+                {/* Form */}
+                <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+                    {/* Email Field */}
+                     {/* Email */}
+                     <div className="relative mt-6">
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder=" "
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.email}
+                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                formik.errors.email && formik.touched.email
+                                    ? 'border-red-500'
+                                    : 'border-gray-300 focus:border-purple-500'
+                            }`}
+                        />
+                        <label
+                            htmlFor="email"
+                            className="absolute left-4 -top-2.5 px-1 peer-focus:bg-white rounded-3xl text-black text-base transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                            Email
+                        </label>
+                        {formik.errors.email && formik.touched.email && (
+                            <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
+                        )}
                     </div>
-                </div>
+
+                    {/* Password Field */}
+                    <div className="relative mt-6">
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder=" "
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.password}
+                            className={`peer w-full px-4 py-4 border bg-gradient-to-r from-white via-purple-500 to-cyan-100 rounded-lg text-gray-700 placeholder-transparent focus:outline-none transition-all ${
+                                formik.errors.password && formik.touched.password
+                                    ? 'border-red-500'
+                                    : 'border-gray-300 focus:border-purple-500'
+                            }`}
+                        />
+                        <label
+                            htmlFor="password"
+                            className="absolute left-4 -top-2.5 px-1 peer-focus:bg-white rounded-3xl text-black text-base transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                        >
+                            Password
+                        </label>
+                        {formik.errors.password && formik.touched.password && (
+                            <p className="text-red-500 text-sm mt-1">{formik.errors.password}</p>
+                        )}
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="w-full py-3 mt-6 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                        disabled={formik.isSubmitting}
+                    >
+                        {formik.isSubmitting ? "Logging in..." : "Log In"}
+                    </button>
+
+                    {/* Sign-up Link */}
+                    <p className="mt-4 text-center text-sm text-gray-600">
+                        Don’t have an account? <Link href="/signup" className="text-purple-600 font-medium">Create Now</Link>
+                    </p>
+                </form>
             </div>
         </div>
     );

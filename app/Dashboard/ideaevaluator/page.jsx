@@ -74,7 +74,7 @@ const IdeaEvaluator = () => {
                 <Field
                   id="program"
                   name="program"
-                  placeholder="e.g., BBA 7th Sem"
+                  placeholder="e.g., BBA "
                   style={{ padding: '0.75rem', border: '1px solid #ddd', borderRadius: '4px' }}
                 />
                 {errors.program && touched.program && (

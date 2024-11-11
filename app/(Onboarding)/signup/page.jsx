@@ -42,6 +42,10 @@ const SignUp = () => {
                         position: "right",
                         backgroundColor: "#4CAF50",
                     }).showToast();
+
+                    setTimeout(() => {
+                        window.location.href = "/login"; // Replace with your target route
+                    }, 5000);
                 }
             } catch (error) {
                 Toastify({

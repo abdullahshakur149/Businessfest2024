@@ -30,7 +30,7 @@ const IdeaEvaluator = () => {
             console.log(values);
             
             try {
-              const response = await axios.post("/api/cohere/", values);
+              const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/api/cohere/`, values);
               if (response.data.success) {
                 setResponseMessage(response.data.response); // Display full response if approved
               } else {

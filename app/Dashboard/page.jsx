@@ -1,26 +1,14 @@
-"use client";
-import DashboardLayout from '@/components/Dashlayout';
-import { useSession } from "next-auth/react"
+import React from "react";
 
-
-export default function DashboardHome() {
-  const { data: session, status } = useSession();
-
+const Page = () => {
+  
+  
   return (
-    <DashboardLayout>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        textAlign: 'center'
-      }}>
-        <h1 className='text-4xl'>Businessfest admin portal</h1>
-        {status === "authenticated" && (
-          <p>Welcome, {session.user.name}!</p>
-        )}
-      </div>
-    </DashboardLayout>
+    
+    <div className="flex justify-center mt-52 md:text-6xl ">
+     Welcome Back ! 
+    </div>
   );
-}
+};
+
+export default Page;

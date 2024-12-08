@@ -42,7 +42,7 @@ const Login = () => {
                     }).showToast();
 
                     setTimeout(() => {
-                        window.location.href = "/Dashboard"; // Replace with your target route
+                        window.location.href = "/dashboard"; 
                     }, 5000);
                 } else {
                     setSubmitting(false);

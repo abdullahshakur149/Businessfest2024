@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import navbarlogo from "@/public/bflogo.png";
-import { FaHome, FaShopify, FaUser } from "react-icons/fa";
+import { FaHome, FaUserPlus, FaLightbulb, FaCheckCircle   } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
 const Dashsidebar = ({ togglebutton }) => {
@@ -42,7 +42,7 @@ const Dashsidebar = ({ togglebutton }) => {
               path === "" ? "bg-blue-400" : ""
             }`}
           >
-            <FaHome className="mr-1 mt-1" />
+            <FaLightbulb className="mr-1 mt-1" />
             Idea Evaluator
           </Link>
 
@@ -52,8 +52,18 @@ const Dashsidebar = ({ togglebutton }) => {
               path === "" ? "bg-blue-400" : ""
             }`}
           >
-            <FaHome className="mr-1 mt-1" />
+            <FaUserPlus className="mr-1 mt-1" />
             Registrations
+          </Link>
+
+          <Link
+            href=""
+            className={`mb-1 p-2 text-black hover:bg-blue-400 hover:text-white duration-100 ease-in-out w-52 rounded-lg flex text-lg ${
+              path === "" ? "bg-blue-400" : ""
+            }`}
+          >
+            <FaCheckCircle  className="mr-1 mt-1" />
+            Evaluation
           </Link>
 
         </div>

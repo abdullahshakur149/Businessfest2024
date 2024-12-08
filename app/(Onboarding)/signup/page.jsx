@@ -32,7 +32,7 @@ const SignUp = () => {
         validationSchema,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             try {
-                const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PRODUCTION}/api/auth/signup/`, values);
+                const response = await axios.post('https://businessfest2024.vercel.app/api/auth/signup/', values);
                 if (response.data.success) {
                     Toastify({
                         text: "Sign-up successful!",

@@ -3,7 +3,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import navbarlogo from "@/public/bflogo.png";
+<<<<<<< HEAD
 import { FaHome, FaShopify, FaUser } from "react-icons/fa";
+=======
+import { FaHome, FaUser } from "react-icons/fa";
+>>>>>>> c73d74bacb2987db66580bee8ffe22b8d265d6bc
 import { usePathname } from "next/navigation";
 
 const Dashsidebar = ({ togglebutton }) => {
@@ -22,7 +26,11 @@ const Dashsidebar = ({ togglebutton }) => {
             src={navbarlogo}
             alt="navbar-logo"
             className="w-32 mx-auto mt-3 md:mt-5"
+<<<<<<< HEAD
             layout="intrinsic" 
+=======
+            layout="intrinsic" // Ensures the image respects the width and height props
+>>>>>>> c73d74bacb2987db66580bee8ffe22b8d265d6bc
           />
         </Link>
 
@@ -36,13 +44,17 @@ const Dashsidebar = ({ togglebutton }) => {
             <FaHome className="mr-1 mt-1" />
             Dashboard
           </Link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c73d74bacb2987db66580bee8ffe22b8d265d6bc
           <Link
             href=""
             className={`mb-1 p-2 text-black hover:bg-blue-400 hover:text-white duration-100 ease-in-out w-52 rounded-lg flex text-lg ${
               path === "" ? "bg-blue-400" : ""
             }`}
           >
+<<<<<<< HEAD
             <FaHome className="mr-1 mt-1" />
             Idea Evaluator
           </Link>
@@ -57,6 +69,11 @@ const Dashsidebar = ({ togglebutton }) => {
             Registrations
           </Link>
 
+=======
+            <FaUser className="mr-1 mt-1" />
+            Teams Evaluation
+          </Link>
+>>>>>>> c73d74bacb2987db66580bee8ffe22b8d265d6bc
         </div>
       </div>
     </div>

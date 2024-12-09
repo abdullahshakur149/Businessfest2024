@@ -14,7 +14,6 @@
   .imgg {
     position: absolute;
     left: 30%;
-    mix-blend-mode: difference;
     right: 80%;
     object-fit: contain;
     max-width: 100%;

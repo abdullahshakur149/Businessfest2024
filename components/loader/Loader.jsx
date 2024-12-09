@@ -29,7 +29,7 @@ const LoaderTwo = ({ setLoading }) => {
         setTimeout(() => {
           setVisible(false);
           setLoading(false);
-          localStorage.setItem("shown",true);      
+          sessionStorage.setItem("shown",true);      
         }, 500);
       });
     }

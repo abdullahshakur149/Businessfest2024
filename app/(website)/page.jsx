@@ -12,7 +12,7 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    if (localStorage.getItem("shown")) {
+    if (sessionStorage.getItem("shown")) {
       setIsLoading(false);
     }
   }, []);

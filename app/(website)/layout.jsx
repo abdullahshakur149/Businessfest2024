@@ -6,9 +6,9 @@ import SessionProvider from "@/lib/SessionProvider";
 const layout = ({children}) => {
   return (
     <html lang='en'>
-        <body>
+        <body >
         <SessionProvider>
-    <main>{children}</main>
+    <main className=' bg-white font-helvetica'>{children}</main>
     </SessionProvider>
         </body>
     </html>

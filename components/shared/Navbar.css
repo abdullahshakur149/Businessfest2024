@@ -1,0 +1,48 @@
+.image {
+    mix-blend-mode: color-burn;
+  }
+  
+  .Navbar-logo {
+    position: relative;
+  }
+  .imagee {
+    mix-blend-mode: luminosity;
+    
+    
+    filter: brightness(0.8) contrast(1.2);
+  }
+  .imgg {
+    position: absolute;
+    left: 30%;
+    mix-blend-mode: difference;
+    right: 80%;
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+  }
+  
+  .navbar-image {
+    width: 10rem;
+  }
+  
+  .Btn {
+    transition: 0.3s;
+  }
+  .Btn:hover {
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .items {
+    transition: 0.3s;
+  }
+  .items:hover {
+    transition: all 0.3s ease-in-out;
+    color: red;
+  }
+  
+  .nav-transition {
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease,padding 0.5s ease;
+  }
+  

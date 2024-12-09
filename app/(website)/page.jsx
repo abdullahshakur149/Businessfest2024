@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client"
+import React, {  useState,useEffect} from "react";
 import Intro from "@/components/Homepage/Intro";
 import WelcomeBfest from "@/components/Homepage/Team";
 import Bfesthistory from "@/components/Homepage/Bfesthistory";
@@ -10,8 +10,12 @@ import Loadertwo from "@/components/loader/Loader";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
-
- 
+  
+  useEffect(() => {
+    if (localStorage.getItem("shown")) {
+      setIsLoading(false);
+    }
+  }, []);
 
   return (
     <div>

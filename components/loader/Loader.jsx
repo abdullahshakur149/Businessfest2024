@@ -10,7 +10,7 @@ const LoaderTwo = ({ setLoading }) => {
 
   useEffect(() => {
     const imageElement = imageRef.current;
-
+    
     // Create GSAP timeline
     let tl = gsap.timeline({ delay: 0.3 });
 
@@ -29,6 +29,7 @@ const LoaderTwo = ({ setLoading }) => {
         setTimeout(() => {
           setVisible(false);
           setLoading(false);
+          localStorage.setItem("shown",true);      
         }, 500);
       });
     }

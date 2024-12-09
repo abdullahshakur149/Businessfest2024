@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import NavbarLogo from "@/public/intro.png";
 import hoverlogo from "@/public/bflogo.png";
-import { FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -49,10 +49,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div   className="w-full">
+    <div className="w-full">
       <nav
-        className={`nav-transition flex items-center justify-between w-full fixed z-20 ${isScrolled ? "backdrop-blur-lg bg-gray-200/50 pt-2" : " rounded-xl "
-          } lg:pr-24 lg:pl-16 mx-auto`}
+        className={`nav-transition flex items-center justify-between w-full fixed z-20 ${
+          isScrolled
+            ? "backdrop-blur-lg bg-gray-200/50 pt-2 p-2"
+            : "rounded-xl pt-4 p-2 md:p-2 lg:p-0 md:pt-0"
+        } lg:pr-24 lg:pl-16 mx-auto`}
       >
         {/* Navbar Logo */}
         <Link
@@ -71,34 +74,51 @@ const Navbar = () => {
             ref={hoverref}
             src={hoverlogo}
             alt="hover-logo"
-
-            className="w-14  imgg  "
+            className="w-14 imgg"
           />
         </Link>
-
 
         {/* Navbar Auth Button (Desktop) */}
         {!menuOpen && (
           <div className="flex md:order-2 items-center space-x-2 relative">
             {session ? (
               <>
-                <button onClick={toggleDropdown} className="bg-gray-800 Btn font-medium text-sm px-4 py-2 hover:bg-gray-700 text-black">
+                <button
+                  onClick={toggleDropdown}
+                  className="bg-gray-800 Btn font-medium text-sm px-4 py-2 hover:bg-gray-700 text-black"
+                >
                   Account
                 </button>
                 {dropdownOpen && (
                   <div className="absolute top-10 bg-gray-100 btnn text-black rounded-lg shadow-lg w-48">
                     <ul className="py-2">
                       <li>
-                        <Link href="/profile" className="block px-4 py-2 hover:bg-gray-300">Profile</Link>
+                        <Link
+                          href="/profile"
+                          className="block px-4 py-2 hover:bg-gray-300"
+                        >
+                          Profile
+                        </Link>
                       </li>
                       <li>
-                        <button onClick={() => { signOut(); setDropdownOpen(false); }} className="block w-full text-left px-4 py-2 hover:bg-gray-300">
+                        <button
+                          onClick={() => {
+                            signOut();
+                            setDropdownOpen(false);
+                          }}
+                          className="block w-full text-left px-4 py-2 hover:bg-gray-300"
+                        >
                           Logout
                         </button>
                       </li>
                       {session.user.role === "admin" && (
                         <li>
-                          <Link href="/dashboard" className="block px-4 py-2 hover:bg-gray-300">Dashboard</Link>
+                          <Link
+                            href="/dashboard"
+                            className="block px-4 py-2 hover:bg-gray-300"
+                          >
+                            Dashboard
+                          </Link>
                         </li>
                       )}
                     </ul>
@@ -107,7 +127,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <button onClick={signIn} className="bg-gradient-to-r hover:scale-110 text-lg duration-200 transition-all ease-in-out hover:rounded-xl  from-purple-400  to-purple-800 from-pur Btn font-medium  px-7 py-2 hover:from-purple-800  hover:to-purple-400 text-neutral-100">
+                <button
+                  onClick={signIn}
+                  className="bg-gradient-to-r hover:scale-110 text-lg duration-200 transition-all ease-in-out hover:rounded-xl from-purple-400 to-purple-800 Btn font-medium px-7 py-2 hover:from-purple-800 hover:to-purple-400 text-neutral-100"
+                >
                   Login
                 </button>
               </>
@@ -124,18 +147,19 @@ const Navbar = () => {
             aria-expanded={menuOpen}
             onClick={toggleMenu}
           >
-            <Image src={hoverlogo} alt="menu-toggle" width={40} height={40} />
+            <FaBars className="text-purple-900 text-xl" />
           </button>
         )}
 
         {/* Sidebar Menu for Mobile */}
         <div
-          className={` fixed top-0 left-0 w-72 z-[9999] h-screen bg-gray-100 text-black transform transition-transform duration-300 md:hidden ${menuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+          className={`fixed top-0 left-0 w-72 z-[9999] h-screen bg-gray-100 text-black transform transition-transform duration-300 md:hidden ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           <div className="flex items-center justify-between p-4">
             <Link href="/" className="flex items-center">
-              <Image src={NavbarLogo} alt="navbar-logo" width={220} height={40} />
+              <Image src={hoverlogo} alt="navbar-logo" width={60} height={40} />
             </Link>
             <button onClick={toggleMenu} className="text-black">
               <FaTimes />
@@ -144,7 +168,10 @@ const Navbar = () => {
           <ul className="flex flex-col">
             {navItems.map((item) => (
               <li key={item.pathname} className="py-2">
-                <Link href={item.path} className="block px-4 py-2 hover:bg-gray-300 rounded">
+                <Link
+                  href={item.path}
+                  className="block px-4 py-2 hover:bg-gradient-to-r from-purple-400 to-purple-800 hover:text-white rounded"
+                >
                   {item.pathname}
                 </Link>
               </li>
@@ -152,14 +179,27 @@ const Navbar = () => {
             <li className="py-2">
               {session ? (
                 <>
-                  <Link href="/profile" className="block px-4 py-2 my-2 w-full bg-gray-800 hover:bg-gray-700 text-black">Profile</Link>
-                  <button onClick={signOut} className="block px-4 py-2 hover:bg-gray-300">
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 my-2 w-full bg-gradient-to-r from-purple-400 to-purple-800 hover:from-purple-800 hover:to-purple-400 text-white text-center rounded"
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={signOut}
+                    className="block px-4 py-2 w-full bg-gradient-to-r from-purple-400 to-purple-800 hover:from-purple-800 hover:to-purple-400 text-white text-center rounded"
+                  >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <button onClick={signIn} className="block px-4 py-2 w-full bg-gray-800 hover:bg-gray-700 rounded text-black">Login</button>
+                  <button
+                    onClick={signIn}
+                    className="block px-4 py-2 w-full bg-gradient-to-r from-purple-400 to-purple-800 hover:from-purple-800 hover:to-purple-400 text-white text-center rounded"
+                  >
+                    Login
+                  </button>
                 </>
               )}
             </li>
@@ -171,9 +211,13 @@ const Navbar = () => {
           <ul className="flex flex-col md:flex-row md:space-x-8 lg:space-x-10 md:-translate-x-16">
             {navItems.map((item) => (
               <li key={item.pathname} className="py-4">
-                <Link href={item.path}
-                  className={`block font-serif   xl:px-4 sm:px-1 ${path === item.path ? "   " : "text-black"} 
-                md:py-2 md:text-lg  duration-150 ease-in-out transition-all rounded-lg hover:bg-gradient-to-r from-purple-400    to-purple-300   hover:text-white  p-3  `}>
+                <Link
+                  href={item.path}
+                  className={`block font-serif xl:px-4 sm:px-1 ${
+                    path === item.path ? "" : "text-black"
+                  } 
+                md:py-2 md:text-lg  duration-150 ease-in-out transition-all rounded-lg hover:bg-gradient-to-r from-purple-400 to-purple-300 hover:text-white p-3`}
+                >
                   {item.pathname}
                 </Link>
               </li>

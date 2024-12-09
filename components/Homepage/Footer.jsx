@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,69 +10,69 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
-    const Goup = ()=>{
-        window.scroll({
-            top:0,behavior:"smooth"
-        })
-    }
+  const Goup = () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="bg-gradient-to-tr from-purple-400 via-cyan-800 to-purple-600 text-gray-300 py-8">
+    <footer className="bg-gradient-to-tr from-purple-400 via-cyan-800 to-purple-600 text-gray-300 py-8 px-4">
       {/* Social Media Section */}
-      <div className="flex justify-center items-center space-x-6 text-xl mb-8">
-        <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className=" cursor-pointer text-blue-300 hover:text-blue-400 hover:bg-white duration-200 ease-in-out transition-all rounded-full hover:shadow-md p-2 text-5xl" />
+      <div className="flex justify-center items-center space-x-4 md:space-x-6 text-lg md:text-xl mb-6 md:mb-8">
+        <Link
+          href="https://twitter.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-blue-300 hover:text-blue-400 hover:bg-white rounded-full transition-all duration-200 ease-in-out hover:shadow-md"
+        >
+          <FaTwitter className="text-3xl md:text-5xl" />
         </Link>
-        <span className="text-gray-500">/</span>
-        <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook className="text-blue-300 hover:text-blue-700 hover:bg-white duration-200 ease-in-out transition-all rounded-full hover:shadow-md p-2 text-5xl cursor-pointer " />
+        <span className="text-gray-500 hidden md:inline-block">/</span>
+        <Link
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-blue-300 hover:text-blue-700 hover:bg-white rounded-full transition-all duration-200 ease-in-out hover:shadow-md"
+        >
+          <FaFacebook className="text-3xl md:text-5xl" />
         </Link>
-        <span className="text-gray-500">/</span>
-        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-blue-300 hover:text-purple-800 hover:bg-white duration-200 ease-in-out transition-all rounded-full hover:shadow-md p-2 text-5xl cursor-pointer" />
+        <span className="text-gray-500 hidden md:inline-block">/</span>
+        <Link
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-blue-300 hover:text-purple-800 hover:bg-white rounded-full transition-all duration-200 ease-in-out hover:shadow-md"
+        >
+          <FaInstagram className="text-3xl md:text-5xl" />
         </Link>
-        
-        
-        
       </div>
 
-      {/* Logo Section */}
-      <div className="text-center flex flex-col mb-8">
+      {/* Logo and Tagline Section */}
+      <div className="text-center flex flex-col items-center mb-6 md:mb-8">
         <Image
           src="/bflogo.png" // Replace with the actual path to your logo
           alt="Your Logo"
-          width={100}
-          height={40}
-          className="mx-auto"
+          width={200}
+          height={30}
+          className="mx-auto  mb-3"
         />
-        <span className="text-white text-5xl font-serif ps-4">Business Fest'24</span>
-        
-        <button onClick={Goup} className="ml-auto p-10 pb-0">
-            <FaArrowCircleUp className="text-4xl"/></button>
-            <span className="text-white text-xl font-serif ps-4">Developed da shpe by <span className="underline">suprastar</span> ao <span className="underline">suprabang</span></span>
+        <span className="text-white text-2xl md:text-4xl font-serif">
+          Business Fest'24
+        </span>
+        <button
+          onClick={Goup}
+          className="p-4 mt-4 rounded-full text-white transition-all hover:scale-110"
+        >
+          <FaArrowCircleUp className="text-3xl md:text-4xl" />
+        </button>
+        <span className="text-white text-sm md:text-lg mt-4">
+          Developed da shpe by{" "}
+          <span className="underline">suprastar</span> ao{" "}
+          <span className="underline">suprabang</span>
+        </span>
       </div>
-
-      {/* Navigation Links */}
-      {/* <div className="flex justify-between items-center max-w-4xl mx-auto px-4 text-sm">
-        <div className="flex space-x-6">
-          <Link href="#work" className="hover:text-white">
-            Work
-          </Link>
-          <Link href="#story" className="hover:text-white">
-            Story
-          </Link>
-          <Link href="#services" className="hover:text-white">
-            Services
-          </Link>
-        </div>
-        <div className="flex space-x-6">
-          <Link href="#careers" className="hover:text-white">
-            Careers
-          </Link>
-          <Link href="#contact" className="hover:text-white">
-            Contact Us
-          </Link>
-        </div>
-      </div> */}
     </footer>
   );
 };

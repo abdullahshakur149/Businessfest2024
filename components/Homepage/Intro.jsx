@@ -5,6 +5,7 @@ import hero from "@/public/intro.png";
 import Image from "next/image";
 import Aos from "aos";
 import "aos/dist/aos.css";
+
 const Intro = () => {
   const targetDate = new Date("2024-12-18T00:00:00"); // Event Date (December 18th, 2024)
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeLeft());
@@ -12,9 +13,9 @@ const Intro = () => {
   useEffect(() => {
     Aos.init({
       duration: 1000,
-      once: false
-    })
-  }, [])
+      once: false,
+    });
+  }, []);
 
   // Function to calculate the remaining time
   function calculateTimeLeft() {
@@ -50,7 +51,7 @@ const Intro = () => {
   }
 
   return (
-    <div >
+    <div>
       <Navbar />
       <div data-aos="zoom-in" className="pt-20">
         <Image
@@ -60,34 +61,54 @@ const Intro = () => {
         />
       </div>
 
-      <div className="clock mx-auto flex bg-gradient-to-tr from-purple-100    p-16 justify-center shadow-md rounded-xl rounded-b-none shadow-neutral-100 w-12/12 ">
-        <div className="flex space-x-52  text-center">
+      <div className="clock mx-auto  flex flex-col lg:flex-row bg-gradient-to-tr from-purple-100 p-8 lg:p-16 justify-center shadow-md rounded-xl rounded-b-none shadow-neutral-100 w-full ">
+        <div className="flex xl:space-x-52 lg:space-x-20 md:space-x-14  justify-center gap-6 lg:gap-12 text-center">
           {/* Days */}
-          <div data-aos="fade-up"
-     data-aos-anchor-placement="center-center" className="w-24 text-center m-5">
-            <p className="text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">{timeRemaining.days}</p>
-            <p className="text-lg font-bold">Days</p>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-center"
+            className="w-24 text-center"
+          >
+            <p className="text-4xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">
+              {timeRemaining.days}
+            </p>
+            <p className="text-sm lg:text-lg font-bold">Days</p>
           </div>
 
           {/* Hours */}
-          <div  data-aos="fade-up"
-     data-aos-anchor-placement="center-center" className="w-24 text-center m-5">
-            <p className="text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">{timeRemaining.hours}</p>
-            <p className="text-lg font-bold">Hours</p>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-center"
+            className="w-24 text-center"
+          >
+            <p className="text-4xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">
+              {timeRemaining.hours}
+            </p>
+            <p className="text-sm lg:text-lg font-bold">Hours</p>
           </div>
 
           {/* Minutes */}
-          <div data-aos="fade-up"
-     data-aos-anchor-placement="center-center" className="w-24 text-center m-5">
-            <p className="text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">{timeRemaining.minutes}</p>
-            <p className="text-lg font-bold">Minutes</p>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-center"
+            className="w-24 text-center"
+          >
+            <p className="text-4xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">
+              {timeRemaining.minutes}
+            </p>
+            <p className="text-sm lg:text-lg font-bold">Minutes</p>
           </div>
 
           {/* Seconds */}
-          <div  data-aos="fade-up"
-     data-aos-anchor-placement="center-center" className="w-24 text-center m-5">
-            <p className="text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">{timeRemaining.seconds}</p>
-            <p className="text-lg font-bold">Seconds</p>
+          <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-center"
+            className="w-24 text-center"
+          >
+            <p className="text-4xl lg:text-7xl font-bold bg-gradient-to-r from-cyan-500/70 to-purple-700 bg-clip-text text-transparent">
+              {timeRemaining.seconds}
+            </p>
+            <p className="text-sm lg:text-lg font-bold">Seconds</p>
           </div>
         </div>
       </div>

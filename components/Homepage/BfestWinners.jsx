@@ -7,21 +7,21 @@ const BfestWinners = () => {
   // Sample data for winners
   const winners = [
     {
-      title: "John Doe",
+      title: "Team Cloo",
       category: "Best Business Pitch",
-      src: "/bflogo.png", // Replace with actual image URL
+      src: "/team1.jpeg",
       content: "John presented an innovative solution for sustainable energy.",
     },
     {
-      title: "Jane Smith",
+      title: "Team Bits",
       category: "Top Innovator",
-      src: "/bflogo.png", // Replace with actual image URL
+      src: "/team2.jpeg",
       content: "Jane's AI-driven solution reshaped the e-commerce landscape.",
     },
     {
-      title: "Sarah Johnson",
+      title: "Team Unique Gem",
       category: "Best Team Collaboration",
-      src: "/bflogo.png", // Replace with actual image URL
+      src: "/team3.jpeg",
       content:
         "Sarah's team displayed unmatched collaboration and project execution.",
     },

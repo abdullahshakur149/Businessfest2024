@@ -32,7 +32,7 @@ const BfestWinners = () => {
       {/* Section Heading */}
       <div data-aos="fade-right" className="mb-8">
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-purple-700">
-          Winners of Bfest'24
+          Winners of Bfest24
         </h2>
         <p className="text-sm md:text-base lg:text-lg text-gray-600 mt-2">
           Celebrating the best ideas, innovations, and leadership at Business

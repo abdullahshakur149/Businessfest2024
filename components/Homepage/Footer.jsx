@@ -59,7 +59,7 @@ const Footer = () => {
           className="mx-auto  mb-3"
         />
         <span className="text-white text-2xl md:text-4xl font-serif">
-          Business Fest'24
+          Business Fest24
         </span>
         <button
           onClick={Goup}
@@ -68,9 +68,8 @@ const Footer = () => {
           <FaArrowCircleUp className="text-3xl md:text-4xl" />
         </button>
         <span className="text-white text-sm md:text-lg mt-4">
-          Developed da shpe by{" "}
-          <span className="underline">suprastar</span> ao{" "}
-          <span className="underline">suprabang</span>
+          Proudly Developed by <span className="underline">Mansoor Khan</span> &{" "}
+          <span className="underline">Abdullah Shakur</span>
         </span>
       </div>
     </footer>
